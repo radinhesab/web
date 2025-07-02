@@ -1,1 +1,44 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>ثبت شرکت | رادین حساب</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+  <div class="container">
+    <h2>ثبت اطلاعات شرکت</h2>
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <ul class="flash">
+          {% for message in messages %}
+            <li>{{ message }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
 
+    <form method="POST" enctype="multipart/form-data">
+      <label>نام شرکت:</label>
+      <input type="text" name="name" required>
+
+      <label>نوع شخصیت:</label>
+      <select name="company_type">
+        <option value="حقوقی">حقوقی</option>
+        <option value="حقیقی">حقیقی</option>
+      </select>
+
+      <label>کد ملی / شناسه ملی:</label>
+      <input type="text" name="national_id" required>
+
+      <label>شماره تماس:</label>
+      <input type="text" name="phone" required>
+
+      <label>آپلود لوگو:</label>
+      <input type="file" name="logo">
+
+      <button type="submit">ثبت شرکت ✅</button>
+    </form>
+  </div>
+</body>
+</html>
